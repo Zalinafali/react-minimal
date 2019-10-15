@@ -1,4 +1,5 @@
 import React from 'react'
+import AppTitle from './AppTitle'
 
 const generateArray = (n) => (Array.from({length: n}, (v,i)=>i+1))
 
@@ -13,8 +14,12 @@ Arr2.sqrt = function(){
 
 const sqrtArr2 = () => (Array.from(Arr2, element => Math.sqrt(element)))
 
+
+
 const MyApp = () => (
   <div>
+    <AppTitle/>
+
     <h1>
       Minimal React zalinafali
       <p>
@@ -41,6 +46,8 @@ const MyApp = () => (
       {sqrtArr2().map(element => <li>{element}</li>)}
 
     </ul>
+
+
   </div>
 )
 
