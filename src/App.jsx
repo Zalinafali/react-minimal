@@ -14,7 +14,90 @@ Arr2.sqrt = function(){
 
 const sqrtArr2 = () => (Array.from(Arr2, element => Math.sqrt(element)))
 
+const data =
+  [
+    {
+      "teacherName": "Jan Nowak",
+      "teacherAge": 36,
+      "active": true,
+      "students": [
+        {
+          "name": "Maciej Janosz",
+          "age": 12
+        },
+        {
+          "name": "Wojciech Kowalski",
+          "age": 15
+        },
+        {
+          "name": "Wioletta PoznaĹska",
+          "age": 1000000
+        }
+      ]
+    },
+    {
+      "teacherName": "Mariusz Flasinski",
+      "teacherAge": 56,
+      "active": true,
+      "students": [
+        {
+          "name": "Jan Kot",
+          "age": 12
+        },
+        {
+          "name": "Jan Ziobro",
+          "age": 15
+        },
+        {
+          "name": "Adam Malysz",
+          "age": 41
+        }
+      ]
+    },
+    {
+      "teacherName": "Wojciech Kuzak",
+      "teacherAge": 44,
+      "active": false,
+      "students": [
+        {
+          "name": "Janina Wronska",
+          "age": 22
+        },
+        {
+          "name": "John Dover",
+          "age": 7
+        },
+        {
+          "name": "Emil Petterson",
+          "age": 46
+        }
+      ]
+    }
+  ]
 
+function allStudents(){
+  document.getElementById('data_id').innerHTML = "List of all students:"
+  data.forEach(element1 => element1.students.forEach(element2 => document.getElementById('data_id').innerHTML += "<li>" + element2.name + "</li>"))
+}
+
+function sortStudents(){
+  document.getElementById('data_id').innerHTML = "Sorted list of all students:"
+  var stud = []
+  data.forEach(element1 => element1.students.forEach(element2 => stud.push(element2.name)))
+  stud.sort().forEach(element => document.getElementById('data_id').innerHTML += "<li>" + element + "</li>")
+}
+
+function oldStudents(){
+  document.getElementById('data_id').innerHTML = "List of old students:"
+  data.forEach(element1 => {
+    if(element1.active == true){
+      element1.students.forEach(element2 => {
+        if(element2.age > 20){
+          document.getElementById('data_id').innerHTML += "<li>" + element2.name + "</li>"
+        }
+      })
+    }})
+}
 
 const MyApp = () => (
   <div>
@@ -47,6 +130,11 @@ const MyApp = () => (
 
     </ul>
 
+    <button type="button" onClick={allStudents}>All students</button>
+    <button type="button" onClick={sortStudents}>Sort students</button>
+    <button type="button" onClick={oldStudents} >Old students</button>
+
+    <ul id="data_id"/>
 
   </div>
 )
