@@ -2,7 +2,7 @@ import React from 'react'
 
 const generateArray = (n) => (Array.from({length: n}, (v,i)=>i+1))
 
-
+const generateRandomArray = (n) => (Array.from({length: n}, () => Math.floor(Math.random() * 25)+1))
 
 const MyApp = () => (
   <div>
@@ -19,6 +19,8 @@ const MyApp = () => (
       <p>generate an array of integers from 1 to n (i.e. 12)</p>
       {generateArray(12).map(element => <li>{element}</li>)}
 
+      <p>generate an array of random integers from 1 to 25 (i.e. 12)</p>
+      {generateRandomArray(12).map(element => <li>{element}</li>)}
 
     </ul>
   </div>
