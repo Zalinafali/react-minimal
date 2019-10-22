@@ -1,6 +1,7 @@
 import React from 'react'
 
 const generateArray = (x,y) => Array.from({length: (y-x+1)}, (v,k)=> x+k);
+const sqrtArr = (A) => (Array.from(A, element => Math.sqrt(element)));
 
 class AppTitle extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class AppTitle extends React.Component {
 
     this.handleChangeA = this.handleChangeA.bind(this);
     this.handleChangeB = this.handleChangeB.bind(this);
+    this.processArray = this.processArray.bind(this);
   } 
 
   handleChangeA(event) {
@@ -31,6 +33,11 @@ class AppTitle extends React.Component {
     { console.log('New number b: ' + event.target.value) }
   }
 
+  processArray(event){
+    var temp = this.state.arr;
+    this.setState({arr: sqrtArr(temp).map(x => " " + x)});
+  }
+
   render() {
     return (
       <div>
@@ -51,7 +58,10 @@ class AppTitle extends React.Component {
           <label>
             Generated array: {this.state.arr}
           </label>
-        </p>       
+        </p>
+        <p>
+          <button onClick={this.processArray}>Process array</button>
+        </p>     
         {console.timeEnd("Render - " + this.state.renderCounter)}
       </div>
     );
