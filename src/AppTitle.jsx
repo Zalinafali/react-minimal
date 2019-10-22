@@ -34,7 +34,7 @@ class AppTitle extends React.Component {
   render() {
     return (
       <div>
-        
+        {console.time("Render - " + (++this.state.renderCounter))}
         <p>
           <label for="a">
             a:
@@ -52,7 +52,7 @@ class AppTitle extends React.Component {
             Generated array: {this.state.arr}
           </label>
         </p>       
-        
+        {console.timeEnd("Render - " + this.state.renderCounter)}
       </div>
     );
   }
