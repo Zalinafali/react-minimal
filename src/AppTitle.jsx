@@ -1,9 +1,11 @@
 import React from 'react'
 
+const generateArray = (x,y) => Array.from({length: (y-x+1)}, (v,k)=> x+k);
+
 class AppTitle extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {a: '', b: ''};
+    this.state = {a: '', b: '', arr: []};
 
     this.handleChangeA = this.handleChangeA.bind(this);
     this.handleChangeB = this.handleChangeB.bind(this);
@@ -12,22 +14,28 @@ class AppTitle extends React.Component {
   } 
 
   handleChangeA(event) {
-    this.setState({a: event.target.value});
+    this.setState({a: Number(event.target.value)});
   }
 
   handleChangeB(event) {
-    this.setState({b: event.target.value});
+    this.setState({b: Number(event.target.value)});
   }
   
   handleSubmitA(event) {
-    alert('New number: ' + this.state.a);
     { console.log('New number a: ' + this.state.a) }
+    if(this.state.a > 0 && this.state.b > this.state.a)
+      this.setState({arr: generateArray(Number(this.state.a),Number(this.state.b)).map(x => " " + x)});
+    else
+      this.setState({arr: []});
     event.preventDefault();
   }
 
   handleSubmitB(event) {
-    alert('New number: ' + this.state.b);
     { console.log('New number b: ' + this.state.b) }
+    if(this.state.a > 0 && this.state.b > this.state.a)
+      this.setState({arr: generateArray(Number(this.state.a),Number(this.state.b)).map(x => " " + x)});
+    else
+      this.setState({arr: []});
     event.preventDefault();
   }
 
@@ -48,6 +56,9 @@ class AppTitle extends React.Component {
           </label>
           <input type="submit" value="Send" />
         </form>
+        <label>
+          Generated array: {this.state.arr}
+        </label>
       </div>
     );
   }
