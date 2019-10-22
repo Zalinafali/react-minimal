@@ -99,7 +99,8 @@ function oldStudents(){
     }})
 }
 
-const MyApp = () => (
+const MyApp = (props) => (
+
   <div>
     <AppTitle/>
 
