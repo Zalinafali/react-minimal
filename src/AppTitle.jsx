@@ -35,22 +35,23 @@ class AppTitle extends React.Component {
     return (
       <div>
         
-        
+        <p>
           <label for="a">
             a:
             <input type="text" id="a" pattern="[0-9]*" value={this.state.a} onChange={this.handleChangeA} />
           </label>
-         
-      
+        </p>
+        <p>
           <label for="b">
             b:
             <input type="text" id="b" pattern="[0-9]*" value={this.state.b} onChange={this.handleChangeB} />
           </label>
-
-       
-        <label>
-          Generated array: {this.state.arr}
-        </label>
+        </p>
+        <p>
+          <label>
+            Generated array: {this.state.arr}
+          </label>
+        </p>       
         
       </div>
     );
